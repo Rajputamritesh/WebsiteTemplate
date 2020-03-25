@@ -72,7 +72,7 @@ console.log("----->"+doc)
 });
 
 const PORT=process.env.PORT||8080;
-const PORT2=process.env.PORT||6000;
+// const PORT2=process.env.PORT||6000;
 
 //serve static assets if in production
 
@@ -85,5 +85,5 @@ if(process.env.NODE_ENV=== 'production')
     })
 }
 server.listen(PORT,()=>console.log("server started"));
-secondServer.listen(PORT2,()=>console.log("server two started"));
+// secondServer.listen(PORT2,()=>console.log("server two started"));
 
