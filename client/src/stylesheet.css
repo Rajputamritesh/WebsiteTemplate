@@ -1,0 +1,28 @@
+
+div.wrapper {
+
+
+    margin:auto;
+
+}
+label{
+    text-align: center;
+    margin :  auto;
+    font-size: 2rem;
+    display: block;
+
+}
+input[type="text"] {
+    display: block;
+    margin : 20px auto;
+    max-width: 800px;
+
+}
+.x{
+    max-height: 40px;
+    margin-top:20px
+
+}
+.colo{
+   color: whitesmoke;
+}

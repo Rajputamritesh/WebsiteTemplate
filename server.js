@@ -45,6 +45,7 @@ io.on('connection', function(socket){
                 var{userDetails,nowTime,type,chatMessage}=obj;
         /* */
         try{
+
         const newMessageDetails= new Chat({
             message:chatMessage,
             sender:userDetails,
@@ -55,7 +56,7 @@ io.on('connection', function(socket){
         newMessageDetails.save().then((doc,err)=>{
             console.log(doc);
             // console.log(doc);
-            if(err) return({success:"failed",err});
+            if(err) return({success:"failed hereeee",err});
             Chat.find({"_id":doc._id})
                 .populate("sender").exec((err,doc)=>{
 console.log("----->"+doc)

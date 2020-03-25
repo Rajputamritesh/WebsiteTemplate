@@ -18,6 +18,7 @@ router.post('/',(req,res)=>{
     }
 
 
+
     User.findOne({email}).then(user=>{
         if(!user) return res.status(400).json({msg:'User does not exsist'});
 //Encrypting passowrd and checkong if entered password correct or not
