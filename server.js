@@ -2,15 +2,15 @@ const express=require('express');
 const mongoose=require('mongoose');
 const bodyparse=require('body-parser');//gets post/get data from the body
 const app=require('express')();
-const secondServer=require('express')();
+// const secondServer=require('express')();
 //create new express app
 const config=require('config');
-const Chat=require('../backend/models/chat');
+const Chat=require('./models/chat');
 
 
 //Bodyparser Middleware
 app.use(bodyparse.json());
-secondServer.use(bodyparse.json());
+// secondServer.use(bodyparse.json());
 
 const UsersReg=require('./Routes/api2/userReg');
 const items=require('./Routes/api/items');
@@ -32,7 +32,7 @@ app.use('/api/searchSuggestions',search);
 app.use('/api/map',map);
 
 //////////////////////////////////////////////////////////////////////////////
-secondServer.use('/petHotel/userReg',UsersReg);
+// secondServer.use('/petHotel/userReg',UsersReg);
 //socket.io code
 var server = require('http').Server(app);
 var io = require('socket.io')(server);

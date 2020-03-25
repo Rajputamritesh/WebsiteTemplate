@@ -10,7 +10,6 @@
     "client": "cd client && npm start",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "cd client && NPM_CONFIG_PRODUCTION=false npm install && npm run build"
-
   },
   "author": "Amritesh",
   "license": "ISC",
@@ -27,11 +26,10 @@
     "mongoose": "^5.8.0",
     "mongoose-float": "^1.0.4",
     "node-fetch": "^2.6.0",
+    "nodemon": "^2.0.1",
     "prefix": "^1.0.0",
     "request": "^2.88.0",
     "socket.io": "^2.3.0"
   },
-  "devDependencies": {
-    "nodemon": "^2.0.1"
-  }
+  "devDependencies": {}
 }
