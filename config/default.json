@@ -1,0 +1,4 @@
+{
+  "mongoURI":"mongodb+srv://rahim123:rahim123@cluster0-56el4.gcp.mongodb.net/test?retryWrites=true&w=majority",
+  "JWTSecret": "This is some secret code 77892792729829 now fuck you ,it_cant_be_accessed"
+}
