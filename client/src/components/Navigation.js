@@ -62,12 +62,12 @@ componentDidUpdate(prevProps, prevState, snapshot) {
                        <RegisterModal/>
                    </NavItem>
                            :""}
-                       {(this.props.auth.isAuthenticated)?
+                       {/*{(this.props.auth.isAuthenticated)?*/}
 
-                           <LinkContainer className={"colo m-2"} to="/chat">
-                               <NavItem className={"nav"}>Chat</NavItem>
-                           </LinkContainer>:""
-                       }
+                       {/*    <LinkContainer className={"colo m-2"} to="/chat">*/}
+                       {/*        <NavItem className={"nav"}>Chat</NavItem>*/}
+                       {/*    </LinkContainer>:""*/}
+                       {/*}*/}
 
                        {(this.props.auth.isAuthenticated)?
 

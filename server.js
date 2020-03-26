@@ -37,6 +37,9 @@ app.use('/api/map',map);
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
+
+io.set('origins', '*:*');
+
 io.on('connection', function(socket){
     console.log("socket io connected")
     // socket.emit('request', /* */); // emit an event to the socket
@@ -54,7 +57,7 @@ io.on('connection', function(socket){
         });
         console.log(newMessageDetails);
         newMessageDetails.save().then((doc,err)=>{
-            console.log(doc);
+            console.log("--doc--->"+doc);
             // console.log(doc);
             if(err) return({success:"failed hereeee",err});
             Chat.find({"_id":doc._id})
@@ -85,6 +88,7 @@ if(process.env.NODE_ENV=== 'production')
 
     })
 }
+
 server.listen(PORT,()=>console.log("server started"));
 // secondServer.listen(PORT2,()=>console.log("server two started"));
 
