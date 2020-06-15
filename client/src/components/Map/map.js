@@ -209,10 +209,11 @@ renderMarkers=(position)=>(
                 {/*//this hhow you return a comonent bycalling a function and retirn the component inside the function*/}
               
                 <div style={{display:"block"}}>
-  <MaterialUIPickers
+  <div style={{marginLeft:"0px"}}><MaterialUIPickers
   SelectedEmployeeId={this.state.SelectedEmployeeId}
   flag={"Map"}
    />
+   </div>
 
 <Input type="select" bsSize="sm"  style={{color:"white",backgroundColor:"#343a40"}}onChange={this.handleChange("SelectedEmployeeId")}>
                 <option >Select Employee</option>

@@ -43,7 +43,7 @@ function MaterialUIPickers(props)
 
     return (
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <Grid container justify="space-around">
+            <Grid container justify="left">
                     <KeyboardDatePicker
                     margin="normal"
                     id="date-picker-dialog"
