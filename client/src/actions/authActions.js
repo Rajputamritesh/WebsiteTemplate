@@ -30,8 +30,7 @@ export const loadUser=()=>(dispatch,getState)=>{
             type:USER_LOADED,
             payload:res.data
 
-        }))
-        .catch(err=>{//err is basically res a response from backend on hitting the api
+        })).catch(err=>{//err is basically res a response from backend on hitting the api
 
             dispatch(
                 returnErrors(err.response.data,err.response.status)
@@ -44,9 +43,9 @@ export const loadUser=()=>(dispatch,getState)=>{
 }
 
 //register user
-export const register=({name,email,password})=>(dispatch,getState)=>{
+export const register=({name,email,password,EmployerEmail})=>(dispatch,getState)=>{
    console.log(password)
-    var body = JSON.stringify({name,email,password});
+    var body = JSON.stringify({name,email,password,EmployerEmail});
     const config={
         headers:{
             "Content-type":"application/json"
@@ -61,14 +60,12 @@ axios.post('/api/users',body,config).then(res=>dispatch({
     dispatch(returnErrors(err.response.data,err.response.status,REGISTER_FAIL));
     dispatch({type:AUTH_ERROR});
 })
-
-
-
 };
 
 //login
 export const login=({email,password})=>(dispatch,getState)=>{
-    console.log(email)
+    console.log(email);
+    console.log(password);
     var body = JSON.stringify({email,password});
 
 

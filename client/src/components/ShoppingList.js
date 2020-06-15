@@ -2,7 +2,7 @@ import {CSSTransition,TransitionGroup} from "react-transition-group";
 
 import React,{Component} from 'react';
 import{Container,ListGroup,ListGroupItem,Button
-
+,Input
 } from 'reactstrap';
 import {connect} from "react-redux";
 import {fetchList} from '../actions/action';
@@ -10,11 +10,26 @@ import {addItem,deleteItem} from "../actions/action";
 import '../reducers/index';
 import MaterialUIPickers from './DateModel/index';
 class ShoppingList extends Component{
+    constructor(props){
+        super(props);
+        this.state={
+       SelectedEmployeeId:""
+        }
 
+
+    };
     componentDidMount() {
         console.log("hiii")
     }
-
+    handleChange=name=>event=>{
+        let value=event.target.value;
+        console.log(name+" "+value);
+       this.setState(prevState=>({
+           ...prevState,
+               [name]:value
+       }))
+       // setValues({...values,error:false,[name]:event.target.value})
+}
     render(){
         const {items}=this.props.items;
         console.log(this.props.items)
@@ -35,7 +50,7 @@ class ShoppingList extends Component{
                                     // this.setState(state=>({
                                     //     items:[...state.items,{id:uuid(),name}]
                                     // }));
-                                    this.props.addItem(name)
+                                    this.props.addItem(name,this.props.auth.user.id)
 
                                 }
                             }
@@ -45,13 +60,33 @@ class ShoppingList extends Component{
 
 
                         }}
-
                 >
                 Add Item
                 </Button>
-                <MaterialUIPickers
+                <Input type="select" bsSize="sm" onChange={this.handleChange("SelectedEmployeeId")}>
+                <option >Select Employee</option>
+                {
+                    (this.props.auth.user && this.props.auth.user.id)? 
+                    <option value={this.props.auth.user.id}>Me</option>:""
+                }
+                
+
+                {
+                (this.props.auth.user && this.props.auth.user.Employees)?this.props.auth.user.Employees.map(({_id,name})=>(
+                <option value={_id}>{name}</option>
+                
+                
+                )):""}
+
+           </Input>
+           <br></br>
+                <MaterialUIPickers 
                 flag={"Mark"}
+                SelectedEmployeeId={this.state.SelectedEmployeeId}
                 />
+                {/* // flag={"Mark"} */}
+            
+            
                 <ListGroup>
                     <TransitionGroup className={"shopping-list"}>
                         {items.map(({_id,name})=>(

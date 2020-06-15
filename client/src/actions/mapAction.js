@@ -6,6 +6,8 @@ import {tokenConfig} from "./authActions";
 
 export  function markMessage(stateRecv){
     console.log(stateRecv);
+    console.log(stateRecv);
+
     return (dispatch,getState) => {
 
 
@@ -21,12 +23,7 @@ export  function markMessage(stateRecv){
             }).catch(err => {
                 console.log(err)
             })
-
-
-
-
-    }
-
+    }    
 };
 
 
@@ -34,17 +31,15 @@ export  function markMessage(stateRecv){
 
 
 
-export const getMarkers=(date)=>(dispatch,getState)=> {//ID is null if nothing is passed in it
+export const getMarkers=(date,id)=>(dispatch,getState)=> {//ID is null if nothing is passed in it
     console.log(date);
     let obj=tokenConfig(getState);
-    obj.params={date:date}
+    obj.params={date:date,id:id}
     console.log(obj);
     return axios.get('/api/map',obj).then(res=>dispatch({
         type:GET_MARKERS,
         payload:res.data
     }))
-
-
 };
 
 

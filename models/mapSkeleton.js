@@ -1,6 +1,8 @@
 const mongoose=require('mongoose');
 const schema =mongoose.Schema;
 //create schema
+const {ObjectId}=mongoose.Schema;
+
 var Float = require('mongoose-float').loadType(mongoose);
 const MapSchema=new schema({
     name:{
@@ -21,6 +23,11 @@ const MapSchema=new schema({
         type:String,
         required:true
 
+    },
+    addedBy:{
+        type:ObjectId,
+        ref:"User",
+        required:true
     },
     date:{
         type:Date,

@@ -45,7 +45,7 @@ var apiService= {
 
         }
 
-        var {name, message, latitude, longitude} = obj;
+        var {name, message, latitude, longitude,id} = obj;
         latitude=latitude.toString();
         longitude=longitude.toString();
         console.log(obj);
@@ -53,7 +53,8 @@ var apiService= {
             name: name,
             message: message,
             latitude: latitude,
-            longitude: longitude
+            longitude: longitude,
+            addedBy:id
         })
         console.log(newMessage);
         newMessage.save().then(() => {

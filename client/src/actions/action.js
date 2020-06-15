@@ -2,11 +2,11 @@ import {GET_ITEMS,ADD_ITEM,DELETE_ITEM,LOADING_ITEMS} from "../actions/types";
 import axios from'axios';
 import {tokenConfig} from "./authActions";
 
-export const fetchList=(date)=>(dispatch,getState)=>{
-
+export const fetchList=(date,id)=>(dispatch,getState)=>{
+console.log(id);
    dispatch(loadingItems());
    let obj=tokenConfig(getState);
-   obj.params={date:date}
+   obj.params={date:date,id:id}
    //this is how you end auth token and another parameter to nodes js as quetry parameter
     //obj.params is mandatory
 
@@ -17,9 +17,11 @@ export const fetchList=(date)=>(dispatch,getState)=>{
    })).catch(err=>{console.log(err)});
 
 };
-export const addItem=(name)=>(dispatch,getState)=>{
-    console.log(name)
-    axios.post('/api/items',{name},tokenConfig(getState)).then(res=>dispatch({
+export const addItem=(name,id)=>(dispatch,getState)=>{
+
+    console.log(name);
+    console.log(id);
+    axios.post('/api/items',{name,id},tokenConfig(getState)).then(res=>dispatch({
         payload:res.data,
         type:ADD_ITEM
 
@@ -43,5 +45,3 @@ export const loadingItems=()=>{
     return {type:LOADING_ITEMS
     }
 }
-
-

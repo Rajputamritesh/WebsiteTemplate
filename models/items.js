@@ -1,6 +1,7 @@
 const mongoose=require('mongoose');
 const schema =mongoose.Schema;
 //create schema
+const {ObjectId}=mongoose.Schema;
 
 const ItemSchema=new schema({
 name:{
@@ -12,6 +13,11 @@ name:{
         type:Date,
         default: Date.now
 
+    },
+    addedBy:{
+        type:ObjectId,
+        ref:"User",
+        required:true
     }
 
 

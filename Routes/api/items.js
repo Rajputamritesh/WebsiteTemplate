@@ -11,6 +11,8 @@ Item=require('../../models/items');
 //route were defined in serverjs then we woulds have used /api.....
 router.get('/',auth,(req,res)=>{
 console.log(req.query.date);
+console.log(req.query.id);
+let id=req.query.id;
     Item.find().sort({date:-1}).then(items=>{
 //console.log(items);
 
@@ -19,7 +21,8 @@ console.log(req.query.date);
     let arr=[];
   items.forEach(data=>{
       let x=new Date(data.date);
-      if(x.getDate()===queryDate.getDate()&&x.getMonth()===queryDate.getMonth()&&x.getFullYear()===queryDate.getFullYear())
+      if(id==data.addedBy&&
+        x.getDate()===queryDate.getDate()&&x.getMonth()===queryDate.getMonth()&&x.getFullYear()===queryDate.getFullYear())
       {
       arr.push(data);
 
@@ -42,8 +45,11 @@ console.log(arr);
 //we send res by res.json();we take req by req.body --->bodyparser
 //date param is set in schema is set automatically
 router.post('/',auth,(req,res)=>{
+
+    console.log(req.body.name+" "+req.body.id);
     const newItem= new Item({
-        name:req.body.name
+        name:req.body.name,
+        addedBy:req.body.id
     });
     newItem.save().then(item=>res.json(item))
 });

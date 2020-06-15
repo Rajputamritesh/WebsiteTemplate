@@ -1,7 +1,7 @@
 const mongoose=require('mongoose');
 const schema =mongoose.Schema;
 //create schema
-
+const {ObjectId}=mongoose.Schema;
 const UserSchema=new schema({
     name:{
         type:String,
@@ -13,6 +13,11 @@ const UserSchema=new schema({
         required:true,
         unique:true
      },
+     EmployerId:{
+        type:ObjectId,
+        ref:"User",
+    
+    },
     password:{
         type:String,
         required:true

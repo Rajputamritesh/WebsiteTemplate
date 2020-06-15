@@ -18,7 +18,6 @@ import "../../src/stylesheet.css";
 import {LinkContainer} from "react-router-bootstrap"
 import {connect} from "react-redux";
 import '../reducers/index';
-import {addItem, deleteItem, fetchList} from "../actions/action";
 class Navigation extends  Component{
    state={
        isOpen:false,

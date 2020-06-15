@@ -9,7 +9,7 @@ import {
     FormGroup,
     Label,
     Input,
-    NavLink,ModalBody}from 'reactstrap';
+    NavLink,ModalBody,CustomInput}from 'reactstrap';
 
 import {connect} from 'react-redux';
 import {register} from '../../actions/authActions';
@@ -24,14 +24,15 @@ class RegisterModal extends Component{
         name:'',
         email:'',
         password:'',
+        EmployerEmail:'',
         message:null,
-        flag:false
+        flag:false,
+        checkbox:false
     };
    static  propTypes={
         isAuthenticated: PropTypes.bool,
         error:PropTypes.object.isRequired,
             register:PropTypes.func.isRequired,
-
 
     };
    //below function works when  there is any change in state
@@ -56,7 +57,8 @@ class RegisterModal extends Component{
       //      }
       //
       // }
-   }
+  
+    }
 
     toggle=()=>{
        this.props.clearErrors();
@@ -71,9 +73,20 @@ class RegisterModal extends Component{
     };
 
     onChange=e=>{
-        this.setState({
-            [e.target.name]:e.target.value
-        });
+    
+
+        if(e.target.name =="checkbox")
+        {
+            this.setState({
+                [e.target.name]:!this.state.checkbox
+            });
+        
+        }else{
+            this.setState({
+                [e.target.name]:e.target.value
+            });
+        }
+  
 
     }
 
@@ -81,10 +94,12 @@ class RegisterModal extends Component{
         e.preventDefault();
         console.log("hiiiii");
 
-const{name,email,password}=this.state;
+const{name,email,password,EmployerEmail}=this.state;
+
 const newUser={
     name,
     email,
+    EmployerEmail,
     password
 }
 this.props.register(newUser);
@@ -131,7 +146,23 @@ this.toggle();
                                 className={"mb-3"}
                                 placeholder={"password...."}
                                 onChange={this.onChange}
+                            
                             />
+
+                           <Label for ="password">Add your Employer ?</Label>
+                           <CustomInput type="checkbox" name ="checkbox" id="checkbox"  onChange={this.onChange} />
+
+                           <Input
+                                type="email"
+                                name={"EmployerEmail"}
+                                id={"EmployerEmail"}
+                                className={"mb-3"}
+                                placeholder={"Employer EmailId...."}
+                                onChange={this.onChange}
+                                disabled={!this.state.checkbox}
+                            
+                            />
+
                             <Button color={'dark'} type="submit" style={{marginTop:'2rem'}} block>
                                 Register</Button>
                         </FormGroup></Form>

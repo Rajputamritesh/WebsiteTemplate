@@ -31,33 +31,20 @@ function MaterialUIPickers(props)
         setSelectedDate(date);
         if(props.flag == "Mark")
         {
-            props.fetchList(date);
+            props.fetchList(date,props.SelectedEmployeeId);
         }
 
         if(props.flag == "Map")
         {
             localStorage.setItem("Date",date);
-            props.getMarkers(date)
+            props.getMarkers(date,props.SelectedEmployeeId)
         }
     };
 
     return (
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <Grid container justify="space-around">
-                {/*<KeyboardDatePicker*/}
-                {/*    disableToolbar*/}
-                {/*    variant="inline"*/}
-                {/*    format="MM/dd/yyyy"*/}
-                {/*    margin="normal"*/}
-                {/*    id="date-picker-inline"*/}
-                {/*    label="Date picker inline"*/}
-                {/*    value={selectedDate}*/}
-                {/*    onChange={handleDateChange}*/}
-                {/*    KeyboardButtonProps={{*/}
-                {/*        'aria-label': 'change date',*/}
-                {/*    }}*/}
-                {/*/>*/}
-                <KeyboardDatePicker
+                    <KeyboardDatePicker
                     margin="normal"
                     id="date-picker-dialog"
                     label="Date picker dialog"
@@ -68,16 +55,6 @@ function MaterialUIPickers(props)
                         'aria-label': 'change date',
                     }}
                 />
-                {/*<KeyboardTimePicker*/}
-                {/*    margin="normal"*/}
-                {/*    id="time-picker"*/}
-                {/*    label="Time picker"*/}
-                {/*    value={selectedDate}*/}
-                {/*    onChange={handleDateChange}*/}
-                {/*    KeyboardButtonProps={{*/}
-                {/*        'aria-label': 'change time',*/}
-                {/*    }}*/}
-                {/*/>*/}
             </Grid>
         </MuiPickersUtilsProvider>
     );
