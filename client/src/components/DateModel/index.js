@@ -56,10 +56,12 @@ function MaterialUIPickers(props)
                     }}
                 />
             </Grid>
+
         </MuiPickersUtilsProvider>
     );
 }
 function mapStateToProps(state) {
+    
   return {  items:state.item};//this how you use mapstate to props in functional component
 }
 
