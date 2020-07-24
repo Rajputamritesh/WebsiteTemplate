@@ -50,7 +50,7 @@ componentDidUpdate(prevProps, prevState, snapshot) {
                    {/*Guest Management*/}
                    {/*</NavbarBrand>*/}
                     <LinkContainer className={"colo m-2"} to="/">
-                        <NavItem className={"nav"}>MarkLife Application</NavItem>
+                        <NavItem className={"nav"}>Mark Your Life</NavItem>
                     </LinkContainer>
                    <NavbarToggler onClick={this.toggle}/>
                    <Collapse isOpen={this.state.isOpen} navbar>
