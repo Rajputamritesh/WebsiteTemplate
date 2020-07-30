@@ -196,7 +196,6 @@ renderMarkers=(position)=>(
 
         <Map  className="map" center={[this.state.coords.lat,this.state.coords.lng]} zoom={this.state.zoom}>
             <TileLayer
-                attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
 
